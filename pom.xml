@@ -72,6 +72,18 @@
 		</dependency>
 
 	</dependencies>
+	
+	    <distributionManagement>
+		 <snapshotRepository>
+		    <id>nexusRepo</id>
+		    <url>http://100.24.55.97:8081/repository/sample-snapshots/</url>
+		 </snapshotRepository>
+		
+		<repository>
+		    <id>nexusRepo</id>
+		    <url>http://100.24.55.97:8081/repository/sample-releases/</url>
+		</repository>
+  	   </distributionManagement>
 
 	<build>
 		<finalName>CounterWebApp</finalName>
