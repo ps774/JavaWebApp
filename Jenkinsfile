@@ -1,12 +1,12 @@
 pipeline {
     agent any
     tools{
-        maven 'Maven3.8.2'
+        maven 'Maven3.8.3'
     }
     stages {
         stage("checkout") {
             steps {
-               checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/keyspaceits/javawebapp.git']]]) 
+               git credentialsId: 'd60190d7-b182-4f05-9f7c-f1defae5b9fc', url: 'https://github.com/ps774/JavaWebApp.git'
             }
         }
         stage("build") {
@@ -23,7 +23,7 @@ pipeline {
         }
         stage("dev deploy") {
             steps {
-                deploy adapters: [tomcat9(credentialsId: 'deployer', path: '', url: 'http://192.168.1.29:8080')], contextPath: null, war: '**/*.war'
+                deploy adapters: [tomcat9(credentialsId: '4bf0f698-3771-473a-bd61-ede8d1a83571', path: '', url: 'http://34.227.66.240:8080/')], contextPath: 'Myweb001', war: 'target/*.war'
             }
         }
 		stage('Dev apprl for QA') {
@@ -36,7 +36,7 @@ pipeline {
         }
         stage('QA Deploy'){
             steps{
-                deploy adapters: [tomcat9(credentialsId: 'deployer', path: '', url: 'http://192.168.1.29:8080')], contextPath: null, war: '**/*.war'
+                deploy adapters: [tomcat9(credentialsId: '4bf0f698-3771-473a-bd61-ede8d1a83571', path: '', url: 'http://34.227.66.240:8080/')], contextPath: 'Myweb001', war: 'target/*.war'
             }
         }
         
