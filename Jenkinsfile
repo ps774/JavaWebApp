@@ -23,7 +23,7 @@ pipeline {
         }
         stage("dev deploy") {
             steps {
-                deploy adapters: [tomcat9(credentialsId: '8701b095-1eb1-40e1-aa59-47ac0286a12a', path: '', url: 'http://52.207.246.28:8080/')], contextPath: 'Myweb', war: 'target/*.war'
+                deploy adapters: [tomcat9(credentialsId: '8701b095-1eb1-40e1-aa59-47ac0286a12a', path: '', url: 'http://52.91.166.237:8080/manager/html')], contextPath: 'Myweb', war: 'target/*.war'
             }
         }
 		stage('Dev apprl for QA') {
@@ -36,7 +36,7 @@ pipeline {
         }
         stage('QA Deploy'){
             steps{
-                deploy adapters: [tomcat9(credentialsId: '8701b095-1eb1-40e1-aa59-47ac0286a12a', path: '', url: 'http://52.207.246.28:8080/')], contextPath: 'Myweb', war: 'target/*.war'
+               deploy adapters: [tomcat9(credentialsId: '8701b095-1eb1-40e1-aa59-47ac0286a12a', path: '', url: 'http://52.91.166.237:8080/manager/html')], contextPath: 'Myweb', war: 'target/*.war'
             }
         }
         
