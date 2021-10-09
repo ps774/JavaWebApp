@@ -17,7 +17,7 @@ pipeline {
         stage("CodeQuality") {
             steps {
                 withSonarQubeEnv('SonarQube') {
-                sh 'mvn sonar:sonar -f pom.xml'
+                sh 'mvn clean sonar:sonar -f pom.xml'
                 }
             }
         }
