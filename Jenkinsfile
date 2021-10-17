@@ -7,7 +7,7 @@ pipeline{
       stages{
           stage("Checkout"){
               steps{
-                  git credentialsId: '1bec3b7c-9b47-4019-8f26-c8ab4d8d4d25', url: 'https://github.com/ps774/JavaWebApp.git'
+                  git 'https://github.com/ps774/JavaWebApp.git'
               }
             }  
               stage("build"){
@@ -25,7 +25,7 @@ pipeline{
                 }          
                 stage("Deploy"){
                     steps{
-                        deploy adapters: [tomcat9(credentialsId: '4df4a4f8-990f-4d5e-8f6b-b74a66649824', path: '', url: 'http://54.174.2.36:8080/manager/html')], contextPath: null, war: '**/*.war'
+                        deploy adapters: [tomcat9(credentialsId: '0e434691-6494-4b3b-95f7-5af7d27eb8ce', path: '', url: 'http://54.89.24.67:8080')], contextPath: null, war: 'target/*.war'
                     }
                 }
                 stage('Dev apprl for QA') {
@@ -38,7 +38,7 @@ pipeline{
         }
         stage('QA Deploy'){
             steps{
-               deploy adapters: [tomcat9(credentialsId: '4df4a4f8-990f-4d5e-8f6b-b74a66649824', path: '', url: 'http://54.174.2.36:8080/manager/html')], contextPath: null, war: '**/*.war'
+               deploy adapters: [tomcat9(credentialsId: '0e434691-6494-4b3b-95f7-5af7d27eb8ce', path: '', url: 'http://54.89.24.67:8080')], contextPath: null, war: 'target/*.war'
             }
         }
       }
