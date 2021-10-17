@@ -7,7 +7,7 @@ pipeline{
       stages{
           stage("Checkout"){
               steps{
-                  git 'https://github.com/ps774/JavaWebApp.git'
+                  git credentialsId: '9f1eb766-42e8-46d0-b241-8f9ade6876ef', url: 'https://github.com/ps774/JavaWebApp.git'
               }
             }  
               stage("build"){
